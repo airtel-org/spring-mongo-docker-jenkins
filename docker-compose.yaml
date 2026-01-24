@@ -1,0 +1,29 @@
+
+version: "3"
+services:
+  springapp:
+    image: nithiii/dockerimg:1.0.0
+    ports:
+    - 8080:8080
+    depends_on:
+    - mongo
+    networks:
+    - dockernet
+    environment:
+    - MONGO_DB_HOSTNAME=mongo
+    - MONGO_DB_USERNAME=devdb
+    - MONGO_DB_PASSWORD=dev@123
+  mongo:
+    image: mongo:8.0.9-noble
+    networks:
+    - dockernet
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=devdb
+    - MONGO_INITDB_ROOT_PASSWORD=dev@123
+    volumes:
+      - dockervol:/data/db
+networks:
+ dockernet:
+  driver: bridge
+volumes:
+  dockervol:
