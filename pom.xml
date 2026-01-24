@@ -91,4 +91,11 @@
 			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+    <snapshotRepository>
+        <id>nexus-snapshots</id>
+        <url>http://13.201.0.67:8081/repository/nexus-snapshot/</url>
+    </snapshotRepository>
+</distributionManagement>
+
 </project>
