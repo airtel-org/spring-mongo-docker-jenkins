@@ -15,7 +15,8 @@
 
     <groupId>com.kk</groupId>
     <artifactId>spring-boot-mongo</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
+
 
     <properties>
         <java.version>1.8</java.version>
@@ -94,5 +95,12 @@
             </plugin>
         </plugins>
     </build>
+             <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshot</id>
+            <url>http://13.201.0.67:8081/repository/nexus-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 
 </project>
