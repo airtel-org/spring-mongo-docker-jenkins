@@ -2,7 +2,7 @@
 version: "3"
 services:
   springapp:
-    image: nithiii/dockerimg:1.0.0
+    image: nithiii/spring-mongo-docker:8080
     ports:
     - 8080:8080
     depends_on:
