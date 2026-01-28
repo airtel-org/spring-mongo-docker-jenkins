@@ -1,61 +1,68 @@
-🚀 End-to-End CI/CD Pipeline for Spring Boot Application
+# 🚀 End-to-End CI/CD Pipeline for Spring Boot Application
 
-Production-style CI/CD implementation using Jenkins, Docker, SonarQube, Nexus, and GitHub Webhooks
+> Production-style CI/CD implementation using Jenkins, Docker, SonarQube, Nexus, and GitHub Webhooks
 
-✨ Project Highlights
+---
 
-✅ Fully automated CI/CD pipeline
-✅ Separate CI & CD servers (real-world setup)
-✅ Code quality gates with SonarQube
-✅ Artifact management using Nexus
-✅ Containerized deployment with Docker & Docker Compose
-✅ GitHub Webhook-triggered pipelines
+## ✨ Project Highlights
 
-📌 Project Overview
+✅ Fully automated CI/CD pipeline  
+✅ Separate CI & CD servers (real-world setup)  
+✅ Code quality gates with SonarQube  
+✅ Artifact management using Nexus  
+✅ Containerized deployment with Docker & Docker Compose  
+✅ GitHub Webhook-triggered pipelines  
+
+---
+
+## 📌 Project Overview
 
 This project demonstrates a real-world DevOps CI/CD pipeline for a Spring Boot application integrated with MongoDB.
 
-The pipeline automates the entire lifecycle:
-code commit → build → quality checks → artifact storage → containerization → deployment, following industry best practices.
+The pipeline automates the complete lifecycle:
 
-🏗️ Architecture Overview
-Layer	Tool
-Source Control	GitHub
-CI Server	Jenkins
-CD Server	Jenkins
-Build Tool	Maven
-Code Quality	SonarQube
-Artifact Repo	Nexus
-Containerization	Docker
-Dependency Management	Docker Compose
-Image Registry	Docker Hub
-Database	MongoDB
+**Code Commit → Build → Quality Checks → Artifact Storage → Containerization → Deployment**
 
-CI and CD are hosted on separate servers to simulate a production-grade DevOps environment.
+All stages follow industry best practices used in production environments.
 
-🛠️ Tech Stack
+---
 
-Java (Spring Boot)
+## 🏗️ Architecture Overview
 
-MongoDB
+| Layer | Tool |
+|------|------|
+| Source Control | GitHub |
+| CI Server | Jenkins |
+| CD Server | Jenkins |
+| Build Tool | Maven |
+| Code Quality | SonarQube |
+| Artifact Repository | Nexus |
+| Containerization | Docker |
+| Dependency Management | Docker Compose |
+| Image Registry | Docker Hub |
+| Database | MongoDB |
 
-Maven
+> CI and CD are hosted on separate servers to simulate a production-grade DevOps setup.
 
-Jenkins (Declarative Pipeline)
+---
 
-SonarQube
+## 🛠️ Tech Stack
 
-Nexus Repository Manager
+- Java (Spring Boot)
+- MongoDB
+- Maven
+- Jenkins (Declarative Pipeline)
+- SonarQube
+- Nexus Repository Manager
+- Docker & Docker Compose
+- Docker Hub
+- GitHub
+- Linux (Ubuntu)
 
-Docker & Docker Compose
+---
 
-Docker Hub
+## 📂 Project Structure
 
-GitHub
-
-Linux (Ubuntu)
-
-📂 Project Structure
 springboot-ci-cd/
 │
 ├── Jenkinsfile
@@ -69,133 +76,140 @@ springboot-ci-cd/
 │
 └── README.md
 
-🔄 CI/CD Pipeline Flow
-🔹 Step 1: Code Push
+---
 
-Developer pushes code to GitHub
+## 🔄 CI/CD Pipeline Flow
 
-GitHub Webhook triggers Jenkins CI pipeline automatically
+### 🔹 Step 1: Code Push
 
-🔹 Step 2: Continuous Integration (CI Server)
+- Developer pushes code to GitHub
+- GitHub Webhook automatically triggers the Jenkins CI pipeline
 
-CI pipeline performs:
+---
 
-1️⃣ Checkout source code
-2️⃣ Build application using Maven
-3️⃣ Run SonarQube code quality analysis
-4️⃣ Publish artifacts to Nexus Repository
-5️⃣ Build Docker image
-6️⃣ Push Docker image to Docker Hub
+### 🔹 Step 2: Continuous Integration (CI Server)
 
-🔹 Step 3: Continuous Deployment (CD Server)
+The CI pipeline performs the following steps:
 
-CD pipeline performs:
+1. Checkout source code  
+2. Build application using Maven  
+3. Run SonarQube code quality analysis  
+4. Publish artifacts to Nexus Repository  
+5. Build Docker image  
+6. Push Docker image to Docker Hub  
 
-1️⃣ Pull Docker image from Docker Hub
-2️⃣ Deploy application using Docker Compose
-3️⃣ Start Spring Boot & MongoDB containers
-4️⃣ Expose application to end users
+---
 
-📜 Jenkins Pipeline
+### 🔹 Step 3: Continuous Deployment (CD Server)
 
-Written using Declarative Pipeline syntax
+The CD pipeline performs:
 
-Pipeline code stored in Jenkinsfile
+1. Pull Docker image from Docker Hub  
+2. Deploy application using Docker Compose  
+3. Start Spring Boot & MongoDB containers  
+4. Expose the application to end users  
 
-Automatically triggered using GitHub Webhooks
+---
 
-Secrets managed securely using Jenkins Credentials Manager
+## 📜 Jenkins Pipeline
 
-🐳 Docker & Docker Compose
+- Written using Declarative Pipeline syntax
+- Pipeline code stored in Jenkinsfile
+- Automatically triggered via GitHub Webhooks
+- Secrets managed using Jenkins Credentials Manager
 
-Docker is used to create immutable application images
+---
 
-Docker Compose is used to manage multi-container dependencies
+## 🐳 Docker & Docker Compose
 
-Docker Compose Services
-Service	Description
-app	Spring Boot application (Port 8080)
-mongo	MongoDB database with persistent volume
-📦 Artifact Management – Nexus
+- Docker is used to build immutable Spring Boot application images
+- Docker Compose is used to manage multi-container dependencies
 
-Maven artifacts stored in Nexus
+### Docker Compose Services
 
-Enables version control and artifact reuse
+| Service | Description |
+|--------|-------------|
+| app | Spring Boot application (Port 8080) |
+| mongo | MongoDB database with persistent Docker volume |
 
-Acts as a centralized artifact repository
+---
 
-📊 Code Quality – SonarQube
+## 📦 Artifact Management – Nexus
 
-Integrated directly into the CI pipeline
+- Maven artifacts stored in Nexus Repository
+- Enables versioning and reuse
+- Acts as a centralized artifact store for the CI pipeline
 
-Performs static code analysis
+---
 
-Ensures:
+## 📊 Code Quality – SonarQube
 
-Clean code
+- Integrated into the CI pipeline
+- Performs static code analysis
+- Ensures:
+  - Clean & maintainable code
+  - Bug detection
+  - Code smell identification
+  - Quality gate validation
 
-Maintainability
+---
 
-Bug & code smell detection
+## 💾 Data Persistence
 
-Quality gate validation
+- MongoDB uses Docker volumes
+- Data remains intact even after container restarts or redeployments
 
-💾 Data Persistence
+---
 
-MongoDB uses Docker volumes
+## 🚀 Application Access
 
-Data remains intact even after container restarts
-
-🚀 Application Access
-
-Once deployment is successful:
+After successful deployment, access the application at:
 
 http://<cd-server-ip>:8080
 
-🔐 Security & Best Practices
+---
 
-No hardcoded credentials
+## 🔐 Security & Best Practices
 
-Jenkins Credentials Manager used for:
+- No hardcoded secrets
+- Jenkins Credentials Manager used for:
+  - GitHub
+  - SonarQube
+  - Nexus
+  - Docker Hub
+- Separate CI & CD servers
+- Production-aligned DevOps practices
 
-GitHub
+---
 
-SonarQube
+## 🎯 DevOps Concepts Demonstrated
 
-Nexus
+✔ End-to-end CI/CD automation  
+✔ Declarative Jenkins pipelines  
+✔ Webhook-based triggers  
+✔ Code quality enforcement  
+✔ Artifact lifecycle management  
+✔ Docker image creation & reuse  
+✔ Docker Compose dependency handling  
+✔ CI/CD server separation  
 
-Docker Hub
+---
 
-Separate CI & CD environments
+## 🔮 Future Enhancements
 
-Infrastructure aligned with production standards
+- Kubernetes deployment
+- Helm chart integration
+- Blue-Green / Canary deployments
+- Monitoring with Prometheus & Grafana
+- Automated testing stages
 
-🎯 DevOps Concepts Demonstrated
+---
 
-✔ End-to-end CI/CD automation
-✔ Declarative Jenkins pipelines
-✔ Webhook-based triggers
-✔ Code quality enforcement
-✔ Artifact lifecycle management
-✔ Docker image creation & reuse
-✔ Docker Compose dependency handling
-✔ CI/CD server separation
+## 👤 Author
 
-🔮 Future Enhancements
-
-Kubernetes deployment
-
-Helm charts
-
-Blue-Green / Canary deployments
-
-Monitoring with Prometheus & Grafana
-
-Automated test stages
-
-👤 Author
-
-Nitheesh Kumar Bellamkonda
+Nitheesh Kumar Bellamkonda  
 DevOps Engineer | AWS | Jenkins | Docker | Kubernetes | CI/CD
+
+---
 
 ⭐ If you like this project, consider starring the repository!
